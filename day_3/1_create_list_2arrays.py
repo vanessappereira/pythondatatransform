@@ -8,25 +8,25 @@
 #4. Limpar listas
 import pickle;
 
-listaDeFrutas = [];
-quantidade = [];
+listaFrutas = [];
+quantidades = [];
 
 #Consultar lista de frutas
 def consultarLista():
-    if not listaDeFrutas:
-        print("A lista encontra se vazia:");
-    else:
-        print("A lista contém as seguintes frutas:");
-        for i, (listaDeFrutas, quantidade) in enumerate(listaDeFrutas, start=1):
-            print(f"{i} - {listaDeFrutas} com {quantidade} unidades.");
-
+  if not listaFrutas:
+    print("A lista encontra-se vazia!")
+  else:
+    print("A Lista contém as seguintes frutas: ")
+    for i, (fruta, quantidade) in enumerate(zip(listaFrutas,quantidades), start =1):
+      print(f"{i} - {fruta} com {quantidade} unidades")
+      
 #Adicionar frutas e quantidade
 def addFrutas():
     try:
         addfruta = input("Por favor introduza a fruta que pretende adicionar: ")
         if addfruta == "":
             raise ValueError("Não pode adicionar uma fruta vazia.");
-        listaDeFrutas.append(addfruta);
+        listaFrutas.append(addfruta);
         addQnt = input("Por favor introduza a quantidade: ");
         if addQnt == "":
             raise ValueError("Não pode adicionar uma quantidade vazia.");
@@ -36,12 +36,12 @@ def addFrutas():
         print("Não pode adicionar uma fruta vazia.");
 
 #Remover fruta e quantidade
-def removFruta():
+def removFruta():    
     consultarLista();
     try:
         index = int(input("Por favor introduza o ID da fruta que pretende eliminar: "))
-        if 1 <= index <= len(listaDeFrutas):
-            listaDeFrutas.pop(index - 1);
+        if 1 <= index <= len(listaFrutas):
+            listaFrutas.pop(index - 1);
             quantidade.pop(index - 1);
             print(f"A fruta {index} foi removida com sucesso.");
         else:
@@ -51,20 +51,20 @@ def removFruta():
 
 #Limpar lista
 def limparListaDeFrutas():
-    listaDeFrutas.clear();
+    listaFrutas.clear();
     quantidade.clear();
 
     print("A lista foi limpa com sucesso.");
 
 def createFile():
     with open("lista_frutas.pickle", "wb") as file:
-        pickle.dump((listaDeFrutas, quantidade), file);
+        pickle.dump((listaFrutas, quantidade), file);
     print("O ficheiro foi criado com sucesso.");
 def loadFile():
-    global listaDeFrutas, quantidade;
+    global listaFrutas, quantidade;
     try:
         with open("lista_frutas.pickle","rb") as file:
-            listaDeFrutas, quantidade = pickle.load(file);
+            listaFrutas, quantidade = pickle.load(file);
             print("O ficheiro foi carregado com sucesso.");
     except FileNotFoundError:
         print("O ficheiro não existe.");
@@ -86,7 +86,7 @@ def menu():
             elif selected == 2:
                 removFruta();
             elif selected == 3:
-                listaDeFrutas();
+                consultarLista();
             elif selected == 4:
                 limparListaDeFrutas();
             elif selected == 9:
