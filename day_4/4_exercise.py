@@ -53,4 +53,5 @@ def main():
     # grafCircular();
     grafHistMediana()
 
-main();
+
+main()
