@@ -102,7 +102,7 @@ def renomearCol():
 def removerColunas():
     listaColunas = df.columns.to_list()
     print(*listaColunas, sep=", ")
-    removeCol = input("Por favor insira a coluna a remover: ")
+    removeCol = input("Por favor insira a coluna a remover: ").title()
     if removeCol not in listaColunas:
         print(f"A coluna {removeCol} não existe")
         return
