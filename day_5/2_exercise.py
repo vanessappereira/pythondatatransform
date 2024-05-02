@@ -80,13 +80,13 @@ def renomearCol():
     O operador * serve para imprimir a lista de forma mais limpa e legível de cada elemento separadamente. 
     O operador sep serve para separar cada elemento da lista com um separador.
     """
-    renomeCol = input("Por favor insira a coluna a renomear: ")
+    renomeCol = input("Por favor insira a coluna a renomear: ").title()
     # Verificar se a coluna existe
     if renomeCol not in nomeColunas:
         print(f"A coluna {renomeCol} não existe")
         return
     else:
-        novoNome = input("Por favor insira o novo nome: ")
+        novoNome = input("Por favor insira o novo nome: ").title()
         confirmation = input(
             f"Está prestes a renomear a coluna {renomeCol} para {novoNome}. \n Pretende continuar? S/N "
         )
