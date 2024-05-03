@@ -20,22 +20,21 @@ def gerarDataFrame():
             ).split(",")
             data[nomeColuna] = dados
             print(f"Coluna com o nome {nomeColuna} adicionada com sucesso. \n")
-
+        return pd.DataFrame(data)
     except:
         print("Ocorreu um erro ao adicionar as colunas")
-        return None
 
 def filtrarColuna():
     global df
+    global data
     nomeColuna = input("Introduza o nome da coluna que deseja filtrar: ")
     if nomeColuna not in df.columns:
         print(f"A coluna {nomeColuna} não existe no Dataframe")
         return
-
     dado = input("Introduza o dado que deseja filtrar: ")
     filtro = df[df[nomeColuna] == dado]
     print(f"Valores da coluna {nomeColuna}, filtrados por {dado}")
-    print(filtro)
+    print(filtro, "\n")
 
 def removerColuna():
     global df
@@ -58,7 +57,7 @@ while True:
     print("2. Filtrar por Coluna: ")
     print("3. Remover Coluna: ")
     print("4. Listar Dataframe: ")
-    print("5. Sair")
+    print("0. Sair")
 
     opcao = input("Escolha a opção a executar: ")
 
