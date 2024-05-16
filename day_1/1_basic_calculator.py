@@ -2,7 +2,7 @@
 
 
 # Backend
-def basicOperators(selected):
+def basicOperators(option):
 
     while True:
 
